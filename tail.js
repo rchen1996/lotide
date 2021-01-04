@@ -8,7 +8,7 @@ const assertEqual = function(actual, expected) {
 
 // function should not modify array that is passed in
 // should return a new array
-const tails = function(arr) {
+const tail = function(arr) {
   let arrTails = [];
   for (let i = 1; i < arr.length; i++) {
     arrTails.push(arr[i]);
@@ -18,14 +18,14 @@ const tails = function(arr) {
 
 // Test case: Check the original array to make sure it hasn't been modified
 const words = ["Yo Yo", "Lighthouse", "Labs"];
-const resultWords = tails(words);
+const resultWords = tail(words);
 assertEqual(words.length, 3); // original array should still have 3 elements
 assertEqual(resultWords[1], "Labs");
 
 // Test case: array with 1 element
 const one = [3];
-console.log(tails(one));
+console.log(tail(one));
 
 //Test case: empty array
 const empty = [];
-console.log(tails(empty));
+console.log(tail(empty));
