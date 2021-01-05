@@ -38,7 +38,7 @@ const assertArraysEqual = function(arr1, arr2) {
     for (let i = 0; i < arr1.length; i++) {
       if (arr1[i] !== arr2[i]) {
         comparison = false;
-        i = arr1.length - 1
+        i = arr1.length - 1;
       } else {
         comparison = true;
       }
