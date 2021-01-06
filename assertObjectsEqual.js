@@ -1,3 +1,28 @@
+const eqArrays = function(arr1, arr2) {
+  // need to keep track of whether or not the two are the same
+  let comparison;
+  // need to check if arrays are the same length
+  if (arr1.length !== arr2.length) {
+    comparison = false;
+    return comparison;
+  } else {
+    if (arr1.length === 0) {
+      comparison = true;
+      return comparison;
+    } else {
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] === arr2[i]) {
+          comparison = true;
+        } else {
+          comparison = false;
+          return comparison;
+        }
+      }
+    }
+  }
+  return comparison;
+};
+
 const eqObjects = function(obj1, obj2) {
   let match;
   // objects need to have the same number of keys
