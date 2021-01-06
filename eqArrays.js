@@ -15,12 +15,17 @@ const eqArrays = function(arr1, arr2) {
     comparison = false;
     return comparison;
   } else {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === arr2[i]) {
-        comparison = true;
-      } else {
-        comparison = false;
-        return comparison;
+    if (arr1.length === 0) {
+      comparison = true;
+      return comparison;
+    } else {
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] === arr2[i]) {
+          comparison = true;
+        } else {
+          comparison = false;
+          return comparison;
+        }
       }
     }
   }
