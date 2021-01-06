@@ -34,6 +34,7 @@ const eqArrays = function(arr1, arr2) {
 // function takes in 2 objects
 // returns true or false based on a perfect match
 const eqObjects = function(obj1, obj2) {
+  let match;
   // objects need to have the same number of keys
   let obj1Keys = Object.keys(obj1); // array of keys for obj1
   let obj2Keys = Object.keys(obj2); // array of keys for obj2
@@ -42,7 +43,19 @@ const eqObjects = function(obj1, obj2) {
     return false;
   } else { // value for each key has to be the same for both objects
     for (const key of obj1Keys) {
-      if (obj1[key] !== obj2[key]) {
+      // need to check if the value of the key is an array
+      // need to check that both values at specified key in both objects are arrays
+      if (Array.isArray(obj1[key]) && Array.isArray(obj2[key])) {
+        match = eqArrays(obj1[key], obj2[key]); // compare the 2 arrays to see if they are the same
+        // match is set to true if they are the same and false if not
+        if (!match) {
+          return false;
+        }
+      } else if (Array.isArray(obj1[key]) && !Array.isArray(obj2[key]) || !Array.isArray(obj1[key]) && Array.isArray(obj2[key])) {
+        // checks if values at specified key are both arrays
+        // if not both arrays, then will auto fail
+        return false;
+      } else if (obj1[key] !== obj2[key]) {
         return false;
       }
     }
@@ -61,7 +74,7 @@ const abc = {a: "1", b: "2", c: "3" };
 assertEqual(eqObjects(ab, abc), false); // should pass
 
 const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1"};
+const dc = { d: ["2", 3], c: "1" };
 assertEqual(eqObjects(cd, dc), true); // should pass
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
