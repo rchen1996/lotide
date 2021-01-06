@@ -54,6 +54,7 @@ const without = function(source, itemsToRemove) {
 assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
 assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
 assertArraysEqual(without([2, 3, 4, 5, 6, 7,], [7, 5, 4, 3, 2]), [6]);
+assertArraysEqual(without([1, "cat", 3, "dog", 1, 1], [1, "dog", 2]), ["cat", 3])
 
 // Need to make sure without is returning a new array and not modifying original
 const words = ["hello", "world", "lighthouse"];
