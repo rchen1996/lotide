@@ -36,7 +36,7 @@ const middle = function(arr) {
   // need a new array to store the middle value(s)
   let mid = [];
   // to check even or odd
-  let divisibleBy2 = arr.length % 2
+  let divisibleBy2 = arr.length % 2;
   // need a variable that stores the index of the middle
   let midIndex;
   // arrays with 1 or 2 elements return empty array (no middle)
