@@ -39,3 +39,10 @@ const letterPositions = function(sentence) {
   // logic to update results
   return results;
 };
+
+// Test Code
+const results1 = letterPositions("hello"); // obj
+assertArraysEqual(results1["h"], [0]);
+assertArraysEqual(results1["e"], [1]);
+assertArraysEqual(results1["l"], [2, 3]);
+assertArraysEqual(results1["o"], [4]);
