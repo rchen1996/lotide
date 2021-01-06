@@ -6,12 +6,17 @@ const eqArrays = function(arr1, arr2) {
     comparison = false;
     return comparison;
   } else {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === arr2[i]) {
-        comparison = true;
-      } else {
-        comparison = false;
-        return comparison;
+    if (arr1.length === 0) {
+      comparison = true;
+      return comparison;
+    } else {
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] === arr2[i]) {
+          comparison = true;
+        } else {
+          comparison = false;
+          return comparison;
+        }
       }
     }
   }
@@ -64,3 +69,4 @@ assertArraysEqual(["1", "2", "3"], ["1", "2", "3"]); // should be true
 assertArraysEqual(["1", "2", "3"], [1, "2", "3"]); // should be false
 assertArraysEqual([1, 2, 3], [1]); // should be false
 assertArraysEqual([1], [1, 2]); // should be false
+assertArraysEqual([], []); // should be true
