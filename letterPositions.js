@@ -36,7 +36,17 @@ const assertArraysEqual = function(arr1, arr2) {
 const letterPositions = function(sentence) {
   // need an empty obj to return
   const results = {};
-  // logic to update results
+  // need to loop the string
+  for (let i = 0; i < sentence.length; i++) {
+    // check if the property already exists
+    if (results[sentence[i]]) {
+      results[sentence[i]].push(i);
+    } else {
+      results[sentence[i]] = []; // if doesn't exist, create an array to store the index
+      // then push the index
+      results[sentence[i]].push(i);
+    }
+  }
   return results;
 };
 
