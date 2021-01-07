@@ -27,8 +27,8 @@ const starsName = {
   "elBulli": {stars: 3},
   "Ora": {stars: 2},
   "Akelarre": {stars: 3}
-}
-let result1 = findKey(starsName, x => x.stars === 2) // "noma"
+};
+let result1 = findKey(starsName, x => x.stars === 2); // "noma"
 assertEqual(result1, "noma");
 let result3 = findKey(starsName, x => x.stars > 4);
 assertEqual(result3, undefined);
