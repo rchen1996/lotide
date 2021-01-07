@@ -40,7 +40,6 @@ const map = function(array, callback) {
   for (let item of array) { // loop through array
     results.push(callback(item)); // push to new array at each element with the element altered by the callback function
   }
-
   return results;
 };
 
