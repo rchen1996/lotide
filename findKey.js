@@ -10,8 +10,7 @@ const assertEqual = function(actual, expected) {
 // scans the object and returns the first key for which the callback returns truthy
 // if no key found, return undefined
 const findKey = function(obj, callback) {
-  let objKeys = Object.keys(obj); // array of keys for the object
-  for (let key of objKeys) {
+  for (let key in obj) {
     if (callback(obj[key])) {
       return key;
     }
@@ -21,19 +20,25 @@ const findKey = function(obj, callback) {
 };
 
 // Test Case
-let result1 = findKey({
+const starsName = {
   "Blue Hill": {stars: 1},
   "Akaleri": {stars: 3},
   "noma": {stars: 2},
   "elBulli": {stars: 3},
   "Ora": {stars: 2},
   "Akelarre": {stars: 3}
-}, x => x.stars === 2) // "noma"
+}
+let result1 = findKey(starsName, x => x.stars === 2) // "noma"
 assertEqual(result1, "noma");
+let result3 = findKey(starsName, x => x.stars > 4);
+assertEqual(result3, undefined);
+let result4 = findKey(starsName, x => x.stars === 3);
+assertEqual(result4, "Akaleri");
 
 const catAttributes = {
-  hosico: "fluffy",
+  hosico: "fluffy" ,
   nino: "orange",
   sakura: "fluffy"
 };
-let result2 = findKey(catAttributes, x => )
+let result2 = findKey(catAttributes, x => x === "fluffy");
+assertEqual(result2, "hosico");
