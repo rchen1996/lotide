@@ -55,6 +55,13 @@ const eqObjects = function(obj1, obj2) {
         // checks if values at specified key are both arrays
         // if not both arrays, then will auto fail
         return false;
+      } else if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+        // checks if the value of the key is an obj for both objects
+        return eqObjects(obj1[key], obj2[key]);
+      } else if (typeof obj1[key] === "object" && typeof obj2[key] !== "object" || typeof obj1[key] !== "object" && typeof obj2[key] === "object") {
+        // checks to make sure the values of both obj at given key are objects
+        // if not objects, then auto fails
+        return false;
       } else if (obj1[key] !== obj2[key]) {
         return false;
       }
@@ -79,3 +86,49 @@ assertEqual(eqObjects(cd, dc), true); // should pass
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 assertEqual(eqObjects(cd, cd2), false); // should pass
+
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // should pass
+
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false) // should pass
+
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false) // should pass
+
+const nestedObj = {
+  a: {
+    b: {
+      c: {
+        d: {
+          e: 5
+        }
+      }
+    }
+  }
+};
+
+const nestedObj2 = {
+  a: {
+    b: {
+      c: {
+        d: {
+          e: 5
+        }
+      }
+    }
+  }
+};
+
+const nestedObj3 = {
+  a: {
+    b: {
+      d: {
+        c: {
+          e: 5
+        }
+      }
+    }
+  }
+};
+
+assertEqual(eqObjects(nestedObj, nestedObj2), true); // should pass
+
+assertEqual(eqObjects(nestedObj, nestedObj3), false); // should pass
