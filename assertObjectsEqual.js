@@ -45,6 +45,13 @@ const eqObjects = function(obj1, obj2) {
         // checks if values at specified key are both arrays
         // if not both arrays, then will auto fail
         return false;
+      } else if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+        // checks if the value of the key is an obj for both objects
+        return eqObjects(obj1[key], obj2[key]);
+      } else if (typeof obj1[key] === "object" && typeof obj2[key] !== "object" || typeof obj1[key] !== "object" && typeof obj2[key] === "object") {
+        // checks to make sure the values of both obj at given key are objects
+        // if not objects, then auto fails
+        return false;
       } else if (obj1[key] !== obj2[key]) {
         return false;
       }
