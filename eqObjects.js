@@ -1,46 +1,5 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ ✅ ✅ Assertion Passed: [${actual}] === [${expected}]`);
-  } else {
-    console.log(`🛑 🛑 🛑 Assertion Failed: [${actual}] !== [${expected}]`);
-  }
-};
-
-const eqArrays = function(arr1, arr2) {
-  let comparison;
-  // need to check if arrays are the same length
-  if (arr1.length !== arr2.length) {
-    // if not same length; auto fails
-    comparison = false;
-    return comparison;
-  } else {
-    if (arr1.length === 0) {
-      // if arrays are same length, and length is 0, meaning empty arr
-      comparison = true;
-      return comparison;
-    } else {
-      for (let i = 0; i < arr1.length; i++) {
-        if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
-          // checks if at each index value, if there is a nested arr
-          // if there is a nested arr, then recurse
-          comparison = eqArrays(arr1[i], arr2[i]);
-        } else if (Array.isArray(arr1[i]) && !Array.isArray(arr2[i]) || !Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
-          // checks to see if both values are nested arrays
-          // if one is a nested arr and the other isn't, then auto fail
-          comparison = false;
-        } else if (arr1[i] === arr2[i]) {
-          // if the values at each index are not the same, then arrays are different
-          comparison = true;
-        } else {
-          comparison = false;
-          return comparison;
-        }
-      }
-    }
-  }
-  // if it passes previous tests, then it must be true
-  return comparison;
-};
+const eqArrays = require('./eqArrays');
+const assertEqual = require('./assertEqual');
 
 // function takes in 2 objects
 // returns true or false based on a perfect match
@@ -83,63 +42,65 @@ const eqObjects = function(obj1, obj2) {
   }
 };
 
-// Test Cases
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-assertEqual(eqObjects(ab, ba), true); // should pass
+module.exports = eqObjects;
 
-const abc = {a: "1", b: "2", c: "3" };
-assertEqual(eqObjects(ab, abc), false); // should pass
+// // Test Cases
+// const ab = { a: "1", b: "2" };
+// const ba = { b: "2", a: "1" };
+// assertEqual(eqObjects(ab, ba), true); // should pass
 
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-assertEqual(eqObjects(cd, dc), true); // should pass
+// const abc = {a: "1", b: "2", c: "3" };
+// assertEqual(eqObjects(ab, abc), false); // should pass
 
-const cd2 = { c: "1", d: ["2", 3, 4] };
-assertEqual(eqObjects(cd, cd2), false); // should pass
+// const cd = { c: "1", d: ["2", 3] };
+// const dc = { d: ["2", 3], c: "1" };
+// assertEqual(eqObjects(cd, dc), true); // should pass
 
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // should pass
+// const cd2 = { c: "1", d: ["2", 3, 4] };
+// assertEqual(eqObjects(cd, cd2), false); // should pass
 
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // should pass
+// assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // should pass
 
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // should pass
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // should pass
 
-const nestedObj = {
-  a: {
-    b: {
-      c: {
-        d: {
-          e: 5
-        }
-      }
-    }
-  }
-};
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // should pass
 
-const nestedObj2 = {
-  a: {
-    b: {
-      c: {
-        d: {
-          e: 5
-        }
-      }
-    }
-  }
-};
+// const nestedObj = {
+//   a: {
+//     b: {
+//       c: {
+//         d: {
+//           e: 5
+//         }
+//       }
+//     }
+//   }
+// };
 
-const nestedObj3 = {
-  a: {
-    b: {
-      d: {
-        c: {
-          e: 5
-        }
-      }
-    }
-  }
-};
+// const nestedObj2 = {
+//   a: {
+//     b: {
+//       c: {
+//         d: {
+//           e: 5
+//         }
+//       }
+//     }
+//   }
+// };
 
-assertEqual(eqObjects(nestedObj, nestedObj2), true); // should pass
+// const nestedObj3 = {
+//   a: {
+//     b: {
+//       d: {
+//         c: {
+//           e: 5
+//         }
+//       }
+//     }
+//   }
+// };
 
-assertEqual(eqObjects(nestedObj, nestedObj3), false); // should pass
+// assertEqual(eqObjects(nestedObj, nestedObj2), true); // should pass
+
+// assertEqual(eqObjects(nestedObj, nestedObj3), false); // should pass

@@ -1,10 +1,4 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ ✅ ✅ Assertion Passed: [${actual}] === [${expected}]`);
-  } else {
-    console.log(`🛑 🛑 🛑 Assertion Failed: [${actual}] !== [${expected}]`);
-  }
-};
+const assertEqual = require('./assertEqual');
 
 // takes in an object and a value
 // scan object and return the first key which contains the given value
@@ -23,21 +17,23 @@ const findKeyByValue = function(obj, value) {
   return undefined;
 };
 
-// Test Cases
-const bestTVShowsByGenre = {
-  "sci_fi": "The Expanse",
-  comedy: "Brooklyn Nine-Nine",
-  drama: "The Wire"
-};
+module.exports = findKeyByValue;
 
-assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
-assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
+// // Test Cases
+// const bestTVShowsByGenre = {
+//   "sci_fi": "The Expanse",
+//   comedy: "Brooklyn Nine-Nine",
+//   drama: "The Wire"
+// };
 
-const catAttributes = {
-  hosico: "fluffy",
-  nino: "orange",
-  sakura: "fluffy"
-};
+// assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
+// assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
 
-assertEqual(findKeyByValue(catAttributes, "fluffy"), "hosico");
-assertEqual(findKeyByValue(catAttributes, "purple"), undefined);
+// const catAttributes = {
+//   hosico: "fluffy",
+//   nino: "orange",
+//   sakura: "fluffy"
+// };
+
+// assertEqual(findKeyByValue(catAttributes, "fluffy"), "hosico");
+// assertEqual(findKeyByValue(catAttributes, "purple"), undefined);

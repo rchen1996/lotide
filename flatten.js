@@ -1,35 +1,4 @@
-const eqArrays = function(arr1, arr2) {
-  // need to keep track of whether or not the two are the same
-  let comparison;
-  // need to check if arrays are the same length
-  if (arr1.length !== arr2.length) {
-    comparison = false;
-    return comparison;
-  } else {
-    if (arr1.length === 0) {
-      comparison = true;
-      return comparison;
-    } else {
-      for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] === arr2[i]) {
-          comparison = true;
-        } else {
-          comparison = false;
-          return comparison;
-        }
-      }
-    }
-  }
-  return comparison;
-};
-
-const assertArraysEqual = function(arr1, arr2) {
-  if (eqArrays(arr1, arr2)) {
-    console.log(`✅ ✅ ✅ Assertion Passed: [${arr1}] === [${arr2}]`);
-  } else {
-    console.log(`🛑 🛑 🛑 Assertion Failed: [${arr1}] !== [${arr2}]`);
-  }
-};
+const assertArraysEqual = require('./assertArraysEqual');
 
 // function that takes in an array containing elements
 // including nested arrays of elements
@@ -51,4 +20,6 @@ const flatten = function(arr) {
   return flattened;
 };
 
-console.log(flatten([1, 2, [3, 4], 5, [6]])); // [1, 2, 3, 4, 5, 6]
+module.exports = flatten;
+
+// console.log(flatten([1, 2, [3, 4], 5, [6]])); // [1, 2, 3, 4, 5, 6]

@@ -1,10 +1,4 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ ✅ ✅ Assertion Passed: [${actual}] === [${expected}]`);
-  } else {
-    console.log(`🛑 🛑 🛑 Assertion Failed: [${actual}] !== [${expected}]`);
-  }
-};
+const assertEqual = require('./assertEqual');
 
 // takes in a string and returns a count of each letter in the sentence
 // don't need to count spaces
@@ -25,8 +19,10 @@ const countLetters = function(str) {
   return lettersCounted;
 };
 
-// Test Cases
-const result1 = countLetters("lighthouse in the house");
-assertEqual(result1["l"], 1);
-assertEqual(result1["o"], 2);
-assertEqual(result1["h"], 4);
+// // Test Cases
+// const result1 = countLetters("lighthouse in the house");
+// assertEqual(result1["l"], 1);
+// assertEqual(result1["o"], 2);
+// assertEqual(result1["h"], 4);
+
+module.exports = countLetters;

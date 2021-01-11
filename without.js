@@ -1,35 +1,4 @@
-const eqArrays = function(arr1, arr2) {
-  // need to keep track of whether or not the two are the same
-  let comparison;
-  // need to check if arrays are the same length
-  if (arr1.length !== arr2.length) {
-    comparison = false;
-    return comparison;
-  } else {
-    if (arr1.length === 0) {
-      comparison = true;
-      return comparison;
-    } else {
-      for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] === arr2[i]) {
-          comparison = true;
-        } else {
-          comparison = false;
-          return comparison;
-        }
-      }
-    }
-  }
-  return comparison;
-};
-
-const assertArraysEqual = function(arr1, arr2) {
-  if (eqArrays(arr1, arr2)) {
-    console.log(`✅ ✅ ✅ Assertion Passed: [${arr1}] === [${arr2}]`);
-  } else {
-    console.log(`🛑 🛑 🛑 Assertion Failed: [${arr1}] !== [${arr2}]`);
-  }
-};
+const assertArraysEqual = require("./assertArraysEqual");
 
 // returns a subset of a given array, removing unwanted elements
 // takes in a source arr and an itemsToRemove arr
@@ -55,13 +24,15 @@ const without = function(source, itemsToRemove) {
   return subset;
 };
 
-// Test Cases
-assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
-assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
-assertArraysEqual(without([2, 3, 4, 5, 6, 7,], [7, 5, 4, 3, 2]), [6]);
-assertArraysEqual(without([1, "cat", 3, "dog", 1, 1], [1, "dog", 2]), ["cat", 3])
+module.exports = without;
 
-// Need to make sure without is returning a new array and not modifying original
-const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]);
-assertArraysEqual(words, ["hello", "world", "lighthouse"]); // checking that original is still the same after calling function
+// // Test Cases
+// assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
+// assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
+// assertArraysEqual(without([2, 3, 4, 5, 6, 7,], [7, 5, 4, 3, 2]), [6]);
+// assertArraysEqual(without([1, "cat", 3, "dog", 1, 1], [1, "dog", 2]), ["cat", 3])
+
+// // Need to make sure without is returning a new array and not modifying original
+// const words = ["hello", "world", "lighthouse"];
+// without(words, ["lighthouse"]);
+// assertArraysEqual(words, ["hello", "world", "lighthouse"]); // checking that original is still the same after calling function
