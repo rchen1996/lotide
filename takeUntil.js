@@ -1,5 +1,3 @@
-const assertArraysEqual = require('./assertArraysEqual');
-
 // function takes in 2 parameters: array, callback
 // function returns a slice of the array with elements taken from the beginning
 // keep going until the callback returns a truthy value
@@ -19,16 +17,3 @@ const takeUntil = function(array, callback) {
 };
 
 module.exports = takeUntil;
-
-// Test cases
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// const results1 = takeUntil(numbers, number => number > 5);
-// assertArraysEqual(results1, [1, 2, 3, 4, 5]);
-
-// const words = ["hello", "my", "name", "is", "Rebecca"];
-// const results2 = takeUntil(words, word => word === "is");
-// assertArraysEqual(results2, ["hello", "my", "name"]);
-
-// const mixed = [1, 2, 3, "one", "two", "three"];
-// const results3 = takeUntil(mixed, x => typeof x === "string");
-// assertArraysEqual(results3, [1, 2, 3]);
