@@ -1,5 +1,4 @@
 const eqArrays = require('./eqArrays');
-const assertEqual = require('./assertEqual');
 
 // function takes in 2 objects
 // returns true or false based on a perfect match
@@ -43,64 +42,3 @@ const eqObjects = function(obj1, obj2) {
 };
 
 module.exports = eqObjects;
-
-// // Test Cases
-// const ab = { a: "1", b: "2" };
-// const ba = { b: "2", a: "1" };
-// assertEqual(eqObjects(ab, ba), true); // should pass
-
-// const abc = {a: "1", b: "2", c: "3" };
-// assertEqual(eqObjects(ab, abc), false); // should pass
-
-// const cd = { c: "1", d: ["2", 3] };
-// const dc = { d: ["2", 3], c: "1" };
-// assertEqual(eqObjects(cd, dc), true); // should pass
-
-// const cd2 = { c: "1", d: ["2", 3, 4] };
-// assertEqual(eqObjects(cd, cd2), false); // should pass
-
-// assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // should pass
-
-// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // should pass
-
-// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // should pass
-
-// const nestedObj = {
-//   a: {
-//     b: {
-//       c: {
-//         d: {
-//           e: 5
-//         }
-//       }
-//     }
-//   }
-// };
-
-// const nestedObj2 = {
-//   a: {
-//     b: {
-//       c: {
-//         d: {
-//           e: 5
-//         }
-//       }
-//     }
-//   }
-// };
-
-// const nestedObj3 = {
-//   a: {
-//     b: {
-//       d: {
-//         c: {
-//           e: 5
-//         }
-//       }
-//     }
-//   }
-// };
-
-// assertEqual(eqObjects(nestedObj, nestedObj2), true); // should pass
-
-// assertEqual(eqObjects(nestedObj, nestedObj3), false); // should pass
