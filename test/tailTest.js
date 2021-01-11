@@ -1,16 +1,27 @@
-const assertEqual = require('../assertEqual');
+const { assert } = require('chai');
 const tail = require('../tail');
 
-// Test case: Check the original array to make sure it hasn't been modified
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-const resultWords = tail(words);
-assertEqual(words.length, 3); // original array should still have 3 elements
-assertEqual(resultWords[1], "Labs");
+describe("#tail", () => {
+  it('should return 3 for the length of the original array ["Yo Yo", "Lighthouse", "Labs"]', () => {
+    const words = ["Yo Yo", "Lighthouse", "Labs"];
+    assert.strictEqual(words.length, 3);
+  });
 
-// Test case: array with 1 element
-const one = [3];
-console.log(tail(one));
+  it('should return ["Lighthouse", "Labs"] for ["Yo Yo", "Lighthouse", "Labs"]', () => {
+    const words = ["Yo Yo", "Lighthouse", "Labs"];
+    const resultWords = tail(words);
+    assert.deepStrictEqual(resultWords, ["Lighthouse", "Labs"]);
+  });
 
-//Test case: empty array
-const empty = [];
-console.log(tail(empty));
+  it('should return [] for [3]', () => {
+    const one = [3];
+    const result = tail(one);
+    assert.deepStrictEqual(result, []);
+  });
+
+  it('should return [] for []', () => {
+    const empty = [];
+    const result = tail(empty);
+    assert.deepStrictEqual(result, []);
+  });
+});
