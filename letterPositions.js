@@ -1,5 +1,3 @@
-const assertArraysEqual = require('./assertArraysEqual');
-
 // return all the indices (zero-based positions) in the string where each character is found
 // multiple numbers may be needed to represent all the places
 const letterPositions = function(sentence) {
@@ -20,10 +18,3 @@ const letterPositions = function(sentence) {
 };
 
 module.exports = letterPositions;
-
-// Test Code
-// const results1 = letterPositions("hello"); // obj
-// assertArraysEqual(results1["h"], [0]);
-// assertArraysEqual(results1["e"], [1]);
-// assertArraysEqual(results1["l"], [2, 3]);
-// assertArraysEqual(results1["o"], [4]);
