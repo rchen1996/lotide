@@ -1,5 +1,3 @@
-const assertArraysEqual = require('./assertArraysEqual');
-
 // map function takes 2 arguments: array to map, callback function
 // function returns new array based on results of callback function
 
@@ -13,16 +11,3 @@ const map = function(array, callback) {
 };
 
 module.exports = map;
-
-// // Test Case
-// const words = ["ground", "control", "to", "major", "tom"];
-
-// const results1 = map(words, word => word[0]);
-// assertArraysEqual(results1, ["g", "c", "t", "m", "t"]);
-
-// const results2 = map(words, word => word + "s");
-// assertArraysEqual(results2, ["grounds", "controls", "tos", "majors", "toms"]);
-
-// const numbs = [1, 2, 3, 4, 5];
-// const results3 = map(numbs, numb => numb + 1);
-// assertArraysEqual(results3, [2, 3, 4, 5, 6]);
